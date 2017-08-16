@@ -1,0 +1,11 @@
+name: LI_GameCraftPE
+author: GameCraftPE
+description: LuckyIsland plugin
+main: GameCraftPE\li\LImain
+version: 0.6dev
+api: [3.0.0-ALPHA7]
+load: STARTUP
+
+commands:
+ li:
+  description: LuckyIsland main command
