@@ -586,7 +586,7 @@ class LIlistener implements Listener
         }
       }
     }
-    if (!$ev->getPlayer()->isOp());
+    if (!$ev->getPlayer()->isOp())
     return;
     $key = (($ev->getBlock()->getX() + 0) . ':' . ($ev->getBlock()->getY() + 0) . ':' . ($ev->getBlock()->getZ() + 0) . ':' . $ev->getPlayer()->getLevel()->getName());
     if (array_key_exists($key, $this->pg->signs)) {
@@ -696,6 +696,8 @@ class LIlistener implements Listener
       case 27:
         $player->getLevel()->dropItem($block, Item::get(Item::DIAMOND_PICKAXE,0,1));
       break;
+      case 28:
+        $player->getLevel()->dropItem($block, Item::get(Item::,0,1));
 
         //unlucky loot:
     }
@@ -709,7 +711,6 @@ class LIlistener implements Listener
       }
     }
     foreach ($this->pg->arenas as $a) {
-      if ($t = $a->inArena($ev->getPlayer()->getName())) {$player->getLevel()->dropItem($block, Item::get(Item::STONE_AXE,0,1));
         if ($t == 2)
         $ev->setCancelled();
         if ($a->GAME_STATE == 0)
