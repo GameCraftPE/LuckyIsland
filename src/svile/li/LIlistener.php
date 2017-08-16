@@ -579,6 +579,11 @@ class LIlistener implements Listener
         if ($a->GAME_STATE == 0)
         $ev->setCancelled();
         break;
+
+        $block = $ev->getBlock
+        if($block->getID === "19"){
+          $this->onLuckyBlockBreak($event)
+        }
       }
     }
     if (!$ev->getPlayer()->isOp())
@@ -596,7 +601,25 @@ class LIlistener implements Listener
     unset($key);
   }
 
-  public function onLuckyBlockBreak(Player $player)
+  public function onLuckyBlockBreak($event){
+    $player = $event->getPlayer();
+    $block = $event->getBlock();
+    switch(mt_rand(1,3)){
+      case 1:
+        $player->getLevel()->dropItem($block, Item::get(Item::DIAMOND,0,1));
+      break;
+      case 2:
+        $player->getLevel()->dropItem($block, Item::get(Item::BOW,0,1));
+        $player->getLevel()->dropItem($block, Item::get(Item::ARROW,0,10));
+      break;
+      case 3:
+        $player->getLevel()->dropItem($block, Item::get(Item::DIAMOND_HELMET,0,1));
+        $player->getLevel()->dropItem($block, Item::get(Item::DIAMOND_CHESTPLATE,0,1));
+        $player->getLevel()->dropItem($block, Item::get(Item::DIAMOND_LEGGINGS,0,1));
+        $player->getLevel()->dropItem($block, Item::get(Item::DIAMOND_BOOTS,0,1));
+      break;
+    }
+  }
 
   public function onPlace(BlockPlaceEvent $ev)
   {

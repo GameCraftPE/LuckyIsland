@@ -266,8 +266,6 @@ final class LIarena
         return true;
     }
 
-
-
     /** VOID */
     public function tick()
     {
@@ -511,7 +509,6 @@ final class LIarena
     /** VOID */
     private function start()
     {
-
         foreach ($this->players as $name => $spawn) {
             if (($p = $this->pg->getServer()->getPlayer($name)) instanceof Player) {
 		            $this->giveKit($p);
@@ -540,7 +537,6 @@ final class LIarena
           $p->setLevel(0);
         }
     }
-
 
     /**
      * @param bool $force
