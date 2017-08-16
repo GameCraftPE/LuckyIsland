@@ -580,13 +580,13 @@ class LIlistener implements Listener
         $ev->setCancelled();
         break;
 
-        $block = $ev->getBlock
+        $block = $ev->getBlock();
         if($block->getID === "19"){
           $this->onLuckyBlockBreak($event)
         }
       }
     }
-    if (!$ev->getPlayer()->isOp())
+    if (!$ev->getPlayer()->isOp());
     return;
     $key = (($ev->getBlock()->getX() + 0) . ':' . ($ev->getBlock()->getY() + 0) . ':' . ($ev->getBlock()->getZ() + 0) . ':' . $ev->getPlayer()->getLevel()->getName());
     if (array_key_exists($key, $this->pg->signs)) {
@@ -604,13 +604,13 @@ class LIlistener implements Listener
   public function onLuckyBlockBreak($event){
     $player = $event->getPlayer();
     $block = $event->getBlock();
-    switch(mt_rand(1,12)){
+    switch(mt_rand(1,25)){
       case 1:
-        $player->getLevel()->dropItem($block, Item::get(Item::DIAMOND,0,1));
+        $player->getLevel()->dropItem($block, Item::get(Item::DIAMOND,0,1)); //lucky loot:
+        $player->getLevel()->dropItem($block, Item::get(Item::GRASS_BLOCK,0,20));
       break;
       case 2:
-        $player->getLevel()->dropItem($block, Item::get(Item::BOW,0,1));
-        $player->getLevel()->dropItem($block, Item::get(Item::ARROW,0,10));
+        $player->getLevel()->dropItem($block, Item::get(Item::COOKED_FISH,0,1));
       break;
       case 3:
         $player->getLevel()->dropItem($block, Item::get(Item::DIAMOND_HELMET,0,1));
@@ -681,6 +681,23 @@ class LIlistener implements Listener
         $player->getLevel()->dropItem($block, Item::get(Item::BOW,0,1));
         $player->getLevel()->dropItem($block, Item::get(Item::ARROW,0,10));
       break;
+      case 23:
+        $player->getLevel()->dropItem($block, Item::get(Item::OAK_WOOD,0,20));
+      break;
+      case 24:
+        $player->getLevel()->dropItem($block, Item::get(Item::IRON_INGOT,0,10));
+      break;
+      case 25:
+        $player->getLevel()->dropItem($block, Item::get(Item::DIAMOND,0,10));
+      break;
+      case 26:
+        $player->getLevel()->dropItem($block, Item::get(Item::DIAMOND_AXE,0,1));
+      break;
+      case 27:
+        $player->getLevel()->dropItem($block, Item::get(Item::DIAMOND_PICKAXE,0,1));
+      break;
+
+        //unlucky loot:
     }
   }
 
@@ -692,7 +709,7 @@ class LIlistener implements Listener
       }
     }
     foreach ($this->pg->arenas as $a) {
-      if ($t = $a->inArena($ev->getPlayer()->getName())) {
+      if ($t = $a->inArena($ev->getPlayer()->getName())) {$player->getLevel()->dropItem($block, Item::get(Item::STONE_AXE,0,1));
         if ($t == 2)
         $ev->setCancelled();
         if ($a->GAME_STATE == 0)
