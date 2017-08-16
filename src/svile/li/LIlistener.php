@@ -604,7 +604,7 @@ class LIlistener implements Listener
   public function onLuckyBlockBreak($event){
     $player = $event->getPlayer();
     $block = $event->getBlock();
-    switch(mt_rand(1,3)){
+    switch(mt_rand(1,12)){
       case 1:
         $player->getLevel()->dropItem($block, Item::get(Item::DIAMOND,0,1));
       break;
@@ -614,9 +614,72 @@ class LIlistener implements Listener
       break;
       case 3:
         $player->getLevel()->dropItem($block, Item::get(Item::DIAMOND_HELMET,0,1));
-        $player->getLevel()->dropItem($block, Item::get(Item::DIAMOND_CHESTPLATE,0,1));
-        $player->getLevel()->dropItem($block, Item::get(Item::DIAMOND_LEGGINGS,0,1));
         $player->getLevel()->dropItem($block, Item::get(Item::DIAMOND_BOOTS,0,1));
+      break;
+      case 4:
+        $player->getLevel()->dropItem($block, Item::get(Item::DIAMOND_CHESTPLATE,0,1));
+      break;
+      case 5:
+        $player->getLevel()->dropItem($block, Item::get(Item::DIAMOND_LEGGINGS,0,1));
+      break;
+      case 6:
+        $player->getLevel()->dropItem($block, Item::get(Item::STONE,0,20));
+      break;
+      case 7:
+        $player->getLevel()->dropItem($block, Item::get(Item::COBWEB,0,3));
+      break;
+      case 8:
+        $player->getLevel()->dropItem($block, Item::get(Item::TNT,0,3));
+        $player->getLevel()->dropItem($block, Item::get(Item::FLINT_AND_STEEL,0,1));
+      break;
+      case 9:
+        $player->getLevel()->dropItem($block, Item::get(Item::DIAMOND_SWORD,0,1));
+      break;
+      case 10:
+        $player->getLevel()->dropItem($block, Item::get(Item::IRON_PICKAXE,0,1));
+        $player->getLevel()->dropItem($block, Item::get(Item::IRON_SHOVEL,0,1));
+        $player->getLevel()->dropItem($block, Item::get(Item::IRON_AXE,0,1));
+      break;
+      case 11:
+        $player->getLevel()->dropItem($block, Item::get(Item::STONE_PICKAXE,0,1));
+        $player->getLevel()->dropItem($block, Item::get(Item::STONE_SHOVEL,0,1));
+        $player->getLevel()->dropItem($block, Item::get(Item::STONE_AXE,0,1));
+      break;
+      case 12:
+        $player->getLevel()->dropItem($block, Item::get(Item::GOLDEN_AXE,0,1));
+        $player->getLevel()->dropItem($block, Item::get(Item::GOLDEN_PICKAXE,0,1));
+        $player->getLevel()->dropItem($block, Item::get(Item::GOLDEN_SHOVEL,0,1));
+      break;
+      case 13:
+        $player->getLevel()->dropItem($block, Item::get(Item::STONE_SWORD,0,1));
+      break;
+      case 14:
+        $player->getLevel()->dropItem($block, Item::get(Item::GOLDEN_SWORD,0,1));
+      break;
+      case 15:
+        $player->getLevel()->dropItem($block, Item::get(Item::BREAD,0,5));
+      break;
+      case 16:
+        $player->getLevel()->dropItem($block, Item::get(Item::EGG,0,16));
+      break;
+      case 17:
+        $player->getLevel()->dropItem($block, Item::get(Item::COOKED_BEEF,0,3));
+      break;
+      case 18:
+        $player->getLevel()->dropItem($block, Item::get(Item::SPONGE,0,3)); //3 lucky blocks
+      break;
+      case 19:
+        $player->getLevel()->dropItem($block, Item::get(Item::IRON_BLOCK,0,1));
+      break;
+      case 20:
+        $player->getLevel()->dropItem($block, Item::get(Item::DIAMOND_BLOCK,0,1));
+      break;
+      case 21:
+        $player->getLevel()->dropItem($block, Item::get(Item::OBSIDIAN,0,10));
+      break;
+      case 22:
+        $player->getLevel()->dropItem($block, Item::get(Item::BOW,0,1));
+        $player->getLevel()->dropItem($block, Item::get(Item::ARROW,0,10));
       break;
     }
   }
