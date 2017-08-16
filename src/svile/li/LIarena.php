@@ -267,27 +267,6 @@ final class LIarena
     }
 
 
-    /** VOID */
-    private function refillChests()
-    {
-        $contents = $this->pg->getChestContents();
-        foreach ($this->pg->getServer()->getLevelByName($this->world)->getTiles() as $tile) {
-            if ($tile instanceof Chest) {
-                //CLEARS CHESTS
-                for ($i = 0; $i < $tile->getSize(); $i++) {
-                    $tile->getInventory()->setItem($i, Item::get(0));
-                }
-                //SET CONTENTS
-                if (empty($contents))
-                    $contents = $this->pg->getChestContents();
-                foreach (array_shift($contents) as $key => $val) {
-                    $tile->getInventory()->setItem($key, Item::get($val[0], 0, $val[1]));
-                }
-            }
-        }
-        unset($contents, $tile);
-    }
-
 
     /** VOID */
     public function tick()
@@ -314,14 +293,6 @@ final class LIarena
             return;
         }
 
-        //Chest refill
-        if ($this->GAME_STATE > 0 && $this->pg->configs['chest.refill'] && ($this->time % $this->pg->configs['chest.refill.rate']) == 0) {
-            $this->refillChests();
-            foreach ($this->pg->getServer()->getLevelByName($this->world)->getPlayers() as $p) {
-                $p->sendMessage($this->pg->lang['game.chest.refill']);
-            }
-            return;
-        }
 
         //PvP - updates
         if ($this->GAME_STATE == 2) {
@@ -540,8 +511,7 @@ final class LIarena
     /** VOID */
     private function start()
     {
-        if ($this->pg->configs['chest.refill'])
-            $this->refillChests();
+
         foreach ($this->players as $name => $spawn) {
             if (($p = $this->pg->getServer()->getPlayer($name)) instanceof Player) {
 		            $this->giveKit($p);
