@@ -585,7 +585,7 @@ class LIlistener implements Listener
 
         $block = $ev->getBlock();
         if($block->getID === "19"){
-          $this->onLuckyBlockBreak($event)
+          $this->onLuckyBlockBreak($event);
         }
       }
     }
@@ -700,7 +700,7 @@ class LIlistener implements Listener
         $player->getLevel()->dropItem($block, Item::get(Item::DIAMOND_PICKAXE,0,1));
       break;
       case 28:
-        $player->getLevel()->dropItem($block, Item::get(Item::,0,1));
+        $player->getLevel()->dropItem($block, Item::get(Item::DIAMOND_PICKAXE,0,1));
       break;
       case 29:
         $player->getLevel()->dropItem($block, Item::get(Item::CRAFTING_TABLE,0,1));

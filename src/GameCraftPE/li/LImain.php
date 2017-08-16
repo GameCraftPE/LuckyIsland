@@ -237,7 +237,7 @@ class LImain extends PluginBase
 
     public function onCommand(CommandSender $sender, Command $command, string $label, array $args):bool
     {
-        if (strtolower($command->getName()) == "\x73\x77") {
+        if (strtolower($command->getName()) == "li") {
             //If LI command, just call GameCraftPE\li\LIcommands->onCommand();
             $this->commands->onCommand($sender, $command, $label, $args);
         }

@@ -151,7 +151,7 @@ final class LIarena
     public function getState()
     {
         $state = TextFormat::GREEN . 'Waiting';
-        LIitch ($this->GAME_STATE) {
+        switch ($this->GAME_STATE) {
             case 1:
             case 2:
                 $state = TextFormat::RED . TextFormat::RED . 'In-Game';

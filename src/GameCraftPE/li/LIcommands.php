@@ -14,8 +14,7 @@ use pocketmine\block\Block;
 use pocketmine\nbt\tag\StringTag as Str;
 
 
-class LIcommands
-{
+class LIcommands{
     /** @var LImain */
     private $pg;
 
@@ -37,8 +36,6 @@ class LIcommands
     {
         if (!($sender instanceof Player) || !$sender->isOp()) {
             switch (strtolower(array_shift($args))):
-
-
                 case 'join':
                     if (!(count($args) < 0b11)) {
                         $sender->sendMessage(TextFormat::AQUA . '>' . TextFormat::RED . 'Usage: /li ' . TextFormat::GREEN . 'join [LIname]' . TextFormat::GRAY . ' [PlayerName]');
@@ -116,7 +113,6 @@ class LIcommands
 
         //Searchs for a valid option
         switch (strtolower(array_shift($args))):
-
 
             case 'create':
                 /*
