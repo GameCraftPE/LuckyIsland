@@ -596,6 +596,7 @@ class LIlistener implements Listener
     unset($key);
   }
 
+  public function onLuckyBlockBreak(Player $player)
 
   public function onPlace(BlockPlaceEvent $ev)
   {
