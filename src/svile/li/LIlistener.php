@@ -30,6 +30,9 @@ use pocketmine\level\Position;
 use pocketmine\level\Location;
 use pocketmine\math\Vector3;
 
+use pocketmine\block\Block;
+use pocketmine\item\Item;
+
 use pocketmine\Player;
 use pocketmine\utils\TextFormat;
 
@@ -604,9 +607,9 @@ class LIlistener implements Listener
   public function onLuckyBlockBreak($event){
     $player = $event->getPlayer();
     $block = $event->getBlock();
-    switch(mt_rand(1,25)){
-      case 1:
-        $player->getLevel()->dropItem($block, Item::get(Item::DIAMOND,0,1)); //lucky loot:
+    switch(mt_rand(1,37)){
+      case 1:   //lucky loot:
+        $player->getLevel()->dropItem($block, Item::get(Item::DIAMOND,0,1));
         $player->getLevel()->dropItem($block, Item::get(Item::GRASS_BLOCK,0,20));
       break;
       case 2:
@@ -698,8 +701,43 @@ class LIlistener implements Listener
       break;
       case 28:
         $player->getLevel()->dropItem($block, Item::get(Item::,0,1));
-
-        //unlucky loot:
+      break;
+      case 29:
+        $player->getLevel()->dropItem($block, Item::get(Item::CRAFTING_TABLE,0,1));
+      break;
+      case 30:
+        $player->getLevel()->dropItem($block, Item::get(Item::GOLDEN_APPLE,0,3));
+      break;
+      case 31:
+        $player->getLevel()->dropItem($block, Item::get(Item::SNOWBALL,0,16));
+      break;
+      case 32:
+        $player->getLevel()->dropItem($block, Item::get(Item::LEATHER_BOOTS,0,1));
+        $player->getLevel()->dropItem($block, Item::get(Item::LEATHER_HELMET,0,1));
+        $player->getLevel()->dropItem($block, Item::get(Item::LEATHER_CHESTPLATE,0,1));
+        $player->getLevel()->dropItem($block, Item::get(Item::LEATHER_LEGGINGS,0,1));
+      break;
+      case 33:
+        $player->getLevel()->dropItem($block, Item::get(Item::CHAINMAIL_HELMET,0,1));
+        $player->getLevel()->dropItem($block, Item::get(Item::CHAINMAIL_BOOTS,0,1));
+        $player->getLevel()->dropItem($block, Item::get(Item::CHAINMAIL_CHESTPLATE,0,1));
+        $player->getLevel()->dropItem($block, Item::get(Item::CHAINMAIL_LEGGINGS,0,1));
+      break;
+      case 34:
+        $player->getLevel()->dropItem($block, Item::get(Item::IRON_HELMET,0,1));
+        $player->getLevel()->dropItem($block, Item::get(Item::IRON_BOOTS,0,1));
+      break;
+      case 35:
+        $player->getLevel()->dropItem($block, Item::get(Item::IRON_CHESTPLATE,0,1));
+        $player->getLevel()->dropItem($block, Item::get(Item::CHAINMAIL_LEGGINGS,0,1));
+      break;
+      case 36:
+        $player->getLevel()->dropItem($block, Item::get(Item::MELON_SLICE,0,15));
+      break;
+          //unlucky loot:
+      case 30:
+        $player->getLevel()->setBlock(new Vector3($block->x, $block->y, $block->z), Block::get(Block::FLOWING_LAVA));
+        break;
     }
   }
 
