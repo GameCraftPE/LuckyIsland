@@ -711,6 +711,7 @@ class LIlistener implements Listener
       }
     }
     foreach ($this->pg->arenas as $a) {
+      if ($t = $a->inArena($ev->getPlayer()->getName())) {
         if ($t == 2)
         $ev->setCancelled();
         if ($a->GAME_STATE == 0)
