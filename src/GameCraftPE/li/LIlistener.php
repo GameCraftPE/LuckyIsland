@@ -633,7 +633,7 @@ class LIlistener implements Listener
       break;
       case 8:
         $player->getLevel()->dropItem($block, Item::get(Item::TNT,0,3));
-        $player->getLevel()->dropItem($block, Item::get(Item::LEVER,0,1));
+        $player->getLevel()->dropItem($block, Item::get(Item::FLINT_AND_STEEL,0,1));
       break;
       case 9:
         $player->getLevel()->dropItem($block, Item::get(Item::DIAMOND_SWORD,0,1));
