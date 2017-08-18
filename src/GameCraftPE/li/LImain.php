@@ -83,10 +83,10 @@ class LImain extends PluginBase
 
         //Creates the database that is needed to store signs info
         try {
-            if (!is_file($this->getDataFolder() . "\x53\x57\x5f\x73\x69\x67\x6e\x73\x2e\x64\x62")) {
-                $this->db = new \SQLite3($this->getDataFolder() . "\x53\x57\x5f\x73\x69\x67\x6e\x73\x2e\x64\x62", SQLITE3_OPEN_READWRITE | SQLITE3_OPEN_CREATE);
+            if (!is_file($this->getDataFolder() . "LI_signs.db")) {
+                $this->db = new \SQLite3($this->getDataFolder() . "LI_signs.db", SQLITE3_OPEN_READWRITE | SQLITE3_OPEN_CREATE);
             } else {
-                $this->db = new \SQLite3($this->getDataFolder() . "\x53\x57\x5f\x73\x69\x67\x6e\x73\x2e\x64\x62", SQLITE3_OPEN_READWRITE);
+                $this->db = new \SQLite3($this->getDataFolder() . "LI_signs.db", SQLITE3_OPEN_READWRITE);
             }
             $this->db->exec("CREATE TABLE IF NOT EXISTS signs (arena TEXT PRIMARY KEY COLLATE NOCASE, x INTEGER , y INTEGER , z INTEGER, world TEXT);");
         } catch (\Exception $e) {
@@ -165,8 +165,8 @@ class LImain extends PluginBase
             'sign.game.full' => '@6This game is full, please wait',
             'sign.game.running' => '@6The game is running, please wait',
             'game.join' => '@5{PLAYER} joined the game {COUNT}',
-            'popup.countdown' => '@9Skywars starting in {N}',
-            'chat.countdown' => '@9Skywars starting in {N}',
+            'popup.countdown' => '@9LuckyIsland starting in {N}',
+            'chat.countdown' => '@9LuckyIsland starting in {N}',
             'game.start' => '@9Let the game begin!',
             'no.pvp.countdown' => '@9You can t PvP for @f{COUNT} @9seconds',
             'game.chest.refill' => '@9Chests has been refilled!',
