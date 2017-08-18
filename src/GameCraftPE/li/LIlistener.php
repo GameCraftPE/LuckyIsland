@@ -581,7 +581,7 @@ class LIlistener implements Listener
       case 4:
       case 5:
       case 6:   //lucky loot
-        $player->getLevel()->dropItem($block, Item::get(Item::SAND_STONE,0,20));
+        $player->getLevel()->dropItem($block, Item::get(Item::SANDSTONE,0,20));
       break;
       case 7:
         $player->getLevel()->dropItem($block, Item::get(Item::COOKED_FISH,0,1));
@@ -690,9 +690,9 @@ class LIlistener implements Listener
       break;
       case 37:
         $player->getLevel()->dropItem($block, Item::get(Item::LEATHER_BOOTS,0,1));
-        $player->getLevel()->dropItem($block, Item::get(Item::LEATHER_HELMET,0,1));
-        $player->getLevel()->dropItem($block, Item::get(Item::LEATHER_CHESTPLATE,0,1));
-        $player->getLevel()->dropItem($block, Item::get(Item::LEATHER_LEGGINGS,0,1));
+        $player->getLevel()->dropItem($block, Item::get(Item::LEATHER_CAP,0,1));
+        $player->getLevel()->dropItem($block, Item::get(Item::LEATHER_TUNIC,0,1));
+        $player->getLevel()->dropItem($block, Item::get(Item::LEATHER_PANTS,0,1));
       break;
       case 38:
         $player->getLevel()->dropItem($block, Item::get(Item::CHAIN_HELMET,0,1));
