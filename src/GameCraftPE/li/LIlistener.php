@@ -574,7 +574,7 @@ class LIlistener implements Listener
   public function onLuckyBlockBreak($event){
     $player = $event->getPlayer();
     $block = $event->getBlock();
-    switch(mt_rand(1,44)){
+    switch(mt_rand(1,50)){
       case 1:
       case 2:
       case 3:
@@ -607,6 +607,9 @@ class LIlistener implements Listener
         $player->getLevel()->dropItem($block, Item::get(Item::FLINT_AND_STEEL,0,1));
       break;
       case 14:
+      case 45:
+      case 46:
+      case 47:
         $player->getLevel()->dropItem($block, Item::get(Item::DIAMOND_SWORD,0,1));
       break;
       case 15:
@@ -656,7 +659,7 @@ class LIlistener implements Listener
         $player->getLevel()->dropItem($block, Item::get(Item::ARROW,0,10));
       break;
       case 28:
-        $player->getLevel()->dropItem($block, Item::get(Item::OAK_WOOD,0,20));
+        $player->getLevel()->dropItem($block, Item::get(Item::WOOD,0,20));
       break;
       case 29:
         $player->getLevel()->dropItem($block, Item::get(Item::IRON_INGOT,0,10));
@@ -668,6 +671,9 @@ class LIlistener implements Listener
         $player->getLevel()->dropItem($block, Item::get(Item::DIAMOND_AXE,0,1));
       break;
       case 32:
+      case 48:
+      case 49:
+      case 50:
         $player->getLevel()->dropItem($block, Item::get(Item::DIAMOND_PICKAXE,0,1));
       break;
       case 33:
