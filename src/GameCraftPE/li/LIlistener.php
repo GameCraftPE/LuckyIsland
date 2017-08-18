@@ -576,8 +576,8 @@ class LIlistener implements Listener
       }
     }
     if($ev->getBlock()->getID() === Block::SPONGE){
-      $this->onLuckyBlockBreak($ev);
       $ev->setDrops([]);
+      $this->onLuckyBlockBreak($ev);
     }
     foreach ($this->pg->arenas as $a) {
       if ($t = $a->inArena($ev->getPlayer()->getName())) {
