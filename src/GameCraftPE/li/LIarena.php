@@ -350,7 +350,6 @@ final class LIarena
         }
         $this->pg->getServer()->loadLevel($this->world);
         $level = $this->pg->getServer()->getLevelByName($this->world);
-        $player->getInventory()->addItem(Item::get(347,0,1));
         $tmp = array_shift($this->spawns);
         $player->teleport(new Position($tmp['x'] + 0.5, $tmp['y'], $tmp['z'] + 0.5, $level), $tmp['yaw'], $tmp['pitch']);
         $this->players[$player->getName()] = $tmp;
@@ -527,13 +526,6 @@ final class LIarena
         $this->time = 0;
         $this->GAME_STATE = 2;
         $this->pg->refreshSigns(false, $this->LIname, $this->getSlot(true), $this->slot, $this->getState());
-        if(count($this->daytime[$this->LIname]) <  count($this->nighttime[$this->LIname])){
-          $p->setLevel(Level::TIME_NIGHT);
-        }elseif(count($this->daytime[$this->LIname]) >  count($this->nighttime[$this->LIname])){
-          $p->setLevel(0);
-        }else{
-          $p->setLevel(0);
-        }
     }
 
     /**

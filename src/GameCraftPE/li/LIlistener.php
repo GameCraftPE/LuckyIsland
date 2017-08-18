@@ -194,38 +194,6 @@ class LIlistener implements Listener
   {
     foreach ($this->pg->arenas as $a) {
       if ($f = $a->inArena($ev->getPlayer()->getName())) {
-        $player = $ev->getPlayer();
-        $item = $ev->getItem();
-        if($item instanceof Item){
-          if($item->getID() === "347"){
-            $player->getInventory()->clearAll();
-            $player->getInventory()->addItem(Item::get(378,0,1));
-            $player->getInventory()->addItem(Item::get(382,0,1));
-            $player->getInventory()->sendContents($player);
-          }
-          if($item->getID() === "378"){
-            if(!in_array($player->getName(), $a->daytime[$a])){
-              if(in_array($player->getName(), $a->nighttime[$a])){
-                unset($a->nighttime[$a][array_search($player->getName(), $a->nighttime[$a])]);
-              }
-              $a->daytime[$a] = $player->getName();
-              $player->getInventory()->clearAll();
-              $player->getInventory()->addItem(Item::get(347,0,1));
-              $player->getInventory()->sendContents($player);
-            }
-          }
-          if($item->getID() === "382"){
-            if(!in_array($player->getName(), $a->nighttime[$a])){
-              if(in_array($player->getName(), $a->daytime[$a])){
-                unset($a->daytime[$a][array_search($player->getName(), $a->daytime[$a])]);
-              }
-              $a->nighttime[$a] = $player->getName();
-              $player->getInventory()->clearAll();
-              $player->getInventory()->addItem(Item::get(347,0,1));
-              $player->getInventory()->sendContents($player);
-            }
-          }
-        }
         if ($f == 2) {
           if (($ev->getItem()->getId() . ':' . $ev->getItem()->getDamage()) == $this->pg->configs['spectator.quit.item'])
           $a->closePlayer($ev->getPlayer());
