@@ -139,8 +139,6 @@ final class LIarena
 
         //Reset Sign
         $this->pg->refreshSigns(false, $this->LIname, 0, $this->slot);
-        if (@array_shift($this->pg->getDescription()->getAuthors()) != "\x73\x76\x69\x6c\x65" || $this->pg->getDescription()->getName() != "\x53\x57\x5f\x73\x76\x69\x6c\x65" || $this->pg->getDescription()->getVersion() != LImain::LI_VERSION)
-            sleep(mt_rand(0x12c, 0x258));
         return true;
     }
 
