@@ -508,8 +508,8 @@ final class LIarena
     {
         foreach ($this->players as $name => $spawn) {
             if (($p = $this->pg->getServer()->getPlayer($name)) instanceof Player) {
-		            $this->giveKit($p);
                 $p->getInventory()->clearAll();
+		            $this->giveKit($p);
                 $p->setMaxHealth($this->pg->configs['join.max.health']);
                 $p->setMaxHealth($p->getMaxHealth());
                 if ($p->getAttributeMap() != null) {//just to be really sure
