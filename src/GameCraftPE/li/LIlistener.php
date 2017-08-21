@@ -543,12 +543,12 @@ class LIlistener implements Listener
         $ev->setCancelled();
       }
     }
-    if($ev->getBlock()->getID() === Block::SPONGE){
-      $ev->setDrops([]);
-      $this->onLuckyBlockBreak($ev);
-    }
     foreach ($this->pg->arenas as $a) {
       if ($t = $a->inArena($ev->getPlayer()->getName())) {
+        if($ev->getBlock()->getID() === Block::SPONGE){
+          $ev->setDrops([]);
+          $this->onLuckyBlockBreak($ev);
+        }
         if ($t == 2)
         $ev->setCancelled();
         if ($a->GAME_STATE == 0)
