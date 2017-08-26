@@ -223,7 +223,7 @@ class LIlistener implements Listener
         }
         if ($a->void >= $ev->getPlayer()->getFloorY() && $ev->getPlayer()->isAlive()) {
           $event = new EntityDamageEvent($ev->getPlayer(), EntityDamageEvent::CAUSE_VOID, 10);
-          $ev->getPlayer()->attack($event->getFinalDamage(), $event);
+          $ev->getPlayer()->attack($event);
           unset($event);
         }
         return;
