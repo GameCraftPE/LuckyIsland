@@ -411,7 +411,7 @@ final class LIarena
             $p->getInventory()->sendArmorContents($p);
             $p->getInventory()->sendContents($p);
             $p->removeAllEffects();
-            $p->teleport($this->pg->getServer()->getDefaultLevel()->getSafeSpawn());
+            $p->teleport($p->getServer()->getLevelByName("Lobby2")->getSafeSpawn());
   	        if ($p->hasPermission("rank.diamond")){
   		        $p->setGamemode("1");
   		        $pk = new ContainerSetContentPacket();
@@ -432,7 +432,7 @@ final class LIarena
             }
             if (!$spectate) {
                 //TODO: Invisibility issues for death players
-                $p->teleport($this->pg->getServer()->getDefaultLevel()->getSafeSpawn());
+                $p->teleport($p->getServer()->getLevelByName("Lobby2")->getSafeSpawn());
             } elseif ($this->GAME_STATE > 0 && 1 < count($this->players)) {
                 $p->gamemode = Player::SPECTATOR;
                 $p->spawnToAll();

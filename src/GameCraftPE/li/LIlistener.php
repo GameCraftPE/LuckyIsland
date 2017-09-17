@@ -46,16 +46,6 @@ class LIlistener implements Listener
     $this->pg = $plugin;
   }
 
-  public function onJoin(PlayerJoinEvent $ev){
-    if ($ev->getPlayer()->hasPermission("rank.diamond")){
-      $ev->getPlayer()->setGamemode("1");
-      $pk = new ContainerSetContentPacket();
-      $pk->targetEid = $ev->getPlayer()->getId();
-      $pk->windowid = ContainerIds::CREATIVE;
-      $ev->getPlayer()->dataPacket($pk);
-    }
-  }
-
   public function onSignChange(SignChangeEvent $ev)
   {
     if ($ev->getLine(0) != 'li' || $ev->getPlayer()->isOp() == false)
@@ -208,7 +198,7 @@ class LIlistener implements Listener
 
   public function onMove(PlayerMoveEvent $ev)
   {
-    if ($ev->getPlayer()->getLevel()->getFolderName() === "Lobby"){
+    if ($ev->getPlayer()->getLevel()->getFolderName() === "Lobby2"){
       if($ev->getTo()->getFloorY() < 3){
         $ev->getPlayer()->teleport($ev->getPlayer()->getLevel()->getSafeSpawn());
       }
@@ -387,7 +377,7 @@ class LIlistener implements Listener
             }elseif($cause == EntityDamageEvent::CAUSE_DROWNING){
               $message = str_replace('{COUNT}', $count, str_replace('{PLAYER}', $p->getDisplayName(), $this->pg->lang['death.drowning']));
             }elseif($cause == EntityDamageEvent::CAUSE_ENTITY_EXPLOSION || $cause == EntityDamageEvent::CAUSE_BLOCK_EXPLOSION){
-              $message = str_replace('{COUNT}', $count, str_replace('{PLAYER}', $p->getDisplayName(), $this->pg->lang['death.tnt']));
+              $message = str_replace('{COUNT}', $count, str_replace('{PLAYER}', $p->getDisplayName(), $this->pg->lang['death.exploding']));
             }elseif($cause == EntityDamageEvent::CAUSE_VOID){
               $message = str_replace('{COUNT}', $count, str_replace('{PLAYER}', $p->getDisplayName(), $this->pg->lang['death.void']));
             }else{
@@ -411,7 +401,7 @@ class LIlistener implements Listener
   {
     if ($ev->getEntity() instanceof Player) {
       $p = $ev->getEntity();
-      if ($p->getLevel()->getFolderName() === "Lobby"){
+      if ($p->getLevel()->getFolderName() === "Lobby2"){
         $ev->setCancelled();
       }
       foreach ($this->pg->arenas as $a) {
@@ -465,7 +455,7 @@ class LIlistener implements Listener
                 }elseif($cause == EntityDamageEvent::CAUSE_DROWNING){
                   $message = str_replace('{COUNT}', $count, str_replace('{PLAYER}', $p->getDisplayName(), $this->pg->lang['death.drowning']));
                 }elseif($cause == EntityDamageEvent::CAUSE_ENTITY_EXPLOSION || $cause == EntityDamageEvent::CAUSE_BLOCK_EXPLOSION){
-                  $message = str_replace('{COUNT}', $count, str_replace('{PLAYER}', $p->getDisplayName(), $this->pg->lang['death.tnt']));
+                  $message = str_replace('{COUNT}', $count, str_replace('{PLAYER}', $p->getDisplayName(), $this->pg->lang['death.exploding']));
                 }elseif($cause == EntityDamageEvent::CAUSE_VOID){
                   $message = str_replace('{COUNT}', $count, str_replace('{PLAYER}', $p->getDisplayName(), $this->pg->lang['death.void']));
                 }else{
@@ -506,7 +496,7 @@ class LIlistener implements Listener
 
   public function onBreak(BlockBreakEvent $ev)
   {
-    if ($ev->getPlayer()->getLevel()->getFolderName() === "Lobby"){
+    if ($ev->getPlayer()->getLevel()->getFolderName() === "Lobby2"){
       if (!$ev->getPlayer()->isOP()){
         $ev->setCancelled();
       }
@@ -694,7 +684,7 @@ class LIlistener implements Listener
 
   public function onPlace(BlockPlaceEvent $ev)
   {
-    if ($ev->getPlayer()->getLevel()->getFolderName() === "Lobby"){
+    if ($ev->getPlayer()->getLevel()->getFolderName() === "Lobby2"){
       if (!$ev->getPlayer()->isOP()){
         $ev->setCancelled();
       }
